@@ -18,7 +18,9 @@ module Spree
           options_text: item.variant.options_text,
           price: item.price,
           quantity: item.quantity,
-          total: item.total
+          total: item.total,
+          position: item.variant.stock_items.first.shelf_position,
+          left: item.variant.stock_items.first.count_on_hand
         )
       end
     end

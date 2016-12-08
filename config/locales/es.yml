@@ -43,3 +43,4 @@ es:
       invoice_slip_legend: Factura / Deslizamiento
       invoice_number: 'Número de factura: %{number}'
       invoice_date: 'Fecha de la factura: %{date}'
+      position: Position

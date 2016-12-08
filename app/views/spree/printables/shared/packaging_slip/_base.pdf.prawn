@@ -1,10 +1,16 @@
 font_style = {
-  face: Spree::PrintInvoice::Config[:font_face],
+  face: 'simhei',
   size: Spree::PrintInvoice::Config[:font_size]
 }
 
 prawn_document(force_download: true) do |pdf|
   pdf.define_grid(columns: 5, rows: 8, gutter: 10)
+  pdf.font_families.update("simhei" => {
+          :normal => Rails.root.join("app/assets/fonts/simhei.ttf"),
+          :italic => Rails.root.join("app/assets/fonts/simhei.ttf"),
+          :bold => Rails.root.join("app/assets/fonts/simhei.ttf"),
+          :bold_italic => Rails.root.join("app/assets/fonts/simhei.ttf")
+      })
   pdf.font font_style[:face], size: font_style[:size]
 
   pdf.repeat(:all) do

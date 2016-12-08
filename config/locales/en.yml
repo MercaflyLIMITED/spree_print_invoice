@@ -2,6 +2,13 @@
 en:
   spree:
     print_invoice:
+      date: Date
+      document_type: Document Type
+      number: Number
+      firstname: FirstName
+      lastname: LastName
+      email: Email
+      total: Total
       documents: Documents
       documents_for_order: "Documents for order %{order_number}"
       buttons:
@@ -48,3 +55,4 @@ en:
       invoice_slip_legend: Invoice/Slip Content
       invoice_number: 'Invoice number: %{number}'
       invoice_date: 'Invoice date: %{date}'
+      position: Position

@@ -1,4 +1,4 @@
-im = Rails.application.assets.find_asset(Spree::PrintInvoice::Config[:logo_path])
+im = Rails.application.assets_manifest.assets[Spree::PrintInvoice::Config[:logo_path]]git
 
 if im && File.exist?(im.pathname)
   pdf.image im.filename, vposition: :top, height: 40, scale: Spree::PrintInvoice::Config[:logo_scale]

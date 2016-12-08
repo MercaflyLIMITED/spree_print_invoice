@@ -11,7 +11,7 @@ module Spree
     preference :use_footer,       :boolean, default: false
     preference :use_page_numbers, :boolean, default: false
     preference :logo_scale,       :integer, default: 50
-    preference :font_face,        :string,  default: 'Helvetica'
+    preference :font_face,        :string,  default: 'Arial'
     preference :font_size,        :integer, default: 9
     preference :store_pdf,        :boolean, default: false
     preference :storage_path,     :string,  default: 'tmp/invoice_prints'

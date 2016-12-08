@@ -1,5 +1,5 @@
 @font_style = {
-  face: Spree::PrintInvoice::Config[:font_face],
+  face: Rails.root.join("app/assets/fonts/simhei.ttf"),
   size: Spree::PrintInvoice::Config[:font_size]
 }
 

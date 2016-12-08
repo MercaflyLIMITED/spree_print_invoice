@@ -22,6 +22,11 @@ module Spree
         @bookkeeping_documents = @bookkeeping_documents.page(params[:page] || 1).per(10)
       end
 
+      def generate
+        @order.invoice_for_order
+        redirect_to spree.admin_order_bookkeeping_documents_path(@order)
+      end
+
       private
 
       def order_focused?

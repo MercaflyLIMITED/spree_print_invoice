@@ -4,6 +4,9 @@
   <% content_for :page_title do %>
     <%= t(:documents_for_order, scope: [:spree, :print_invoice], order_number: @order.number) %>
   <% end %>
+    <% content_for :page_actions do %>
+      <%= button_link_to Spree.t(:create_invoice), '/admin/orders/' + @order.number + '/generate', class: "btn-success", icon: 'add' %>
+    <% end %>
 <% else %>
   <% content_for :page_title do %>
     <%= t(:documents, scope: [:spree, :print_invoice]) %>

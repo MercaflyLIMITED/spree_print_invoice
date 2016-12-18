@@ -35,8 +35,9 @@ prawn_document(force_download: true) do |pdf|
     pdf.text Spree::PrintInvoice::Config[:anomaly_message], align: :left, size: @font_size
 
     pdf.move_down 20
-    pdf.bounding_box([0, pdf.cursor], width: pdf.bounds.width, height: 250) do
+    pdf.bounding_box([0, pdf.cursor], width: pdf.bounds.width, height: 150) do
       pdf.transparent(0.5) { pdf.stroke_bounds }
+      pdf.text @doc.completed_date
     end
   end
 

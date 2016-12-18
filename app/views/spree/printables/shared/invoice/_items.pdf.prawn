@@ -1,10 +1,10 @@
 header = [
   pdf.make_cell(content: Spree.t(:sku)),
-  pdf.make_cell(content: Spree.t(:item_description)),
-  pdf.make_cell(content: Spree.t(:options)),
-  pdf.make_cell(content: Spree.t(:price)),
-  pdf.make_cell(content: Spree.t(:qty)),
-  pdf.make_cell(content: Spree.t(:total))
+  pdf.make_cell(content: Spree.t(:item_description, scope: :print_invoice)),
+  pdf.make_cell(content: Spree.t(:options, scope: :print_invoice)),
+  pdf.make_cell(content: Spree.t(:price, scope: :print_invoice)),
+  pdf.make_cell(content: Spree.t(:qty, scope: :print_invoice)),
+  pdf.make_cell(content: Spree.t(:total, scope: :print_invoice))
 ]
 data = [header]
 

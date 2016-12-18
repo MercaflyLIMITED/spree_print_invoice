@@ -2,7 +2,16 @@
 es:
   spree:
     print_invoice:
+      date: Date
       documents: Documentos
+      document_type: Documentos Tipo
+      number: Número
+      firstname: Nombre
+      lastname: Apellido
+      email: correo electrónico
+      total: Total
+      documents: Documentos
+      documents_for_order: "Documents for order %{order_number}"
       buttons:
         invoice: Imprimir Factura
         packaging_slip: Imprimir Recibo para el Embalaje

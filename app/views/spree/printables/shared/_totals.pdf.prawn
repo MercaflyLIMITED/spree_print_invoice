@@ -2,7 +2,7 @@
 totals = []
 
 # Subtotal
-totals << [pdf.make_cell(content: Spree.t(:subtotal)), invoice.display_item_total.to_s]
+totals << [pdf.make_cell(content: Spree.t(:subtotal, scope: :print_invoice)), invoice.display_item_total.to_s]
 
 # Adjustments
 invoice.adjustments.each do |adjustment|
@@ -15,7 +15,7 @@ invoice.shipments.each do |shipment|
 end
 
 # Totals
-totals << [pdf.make_cell(content: Spree.t(:order_total)), invoice.display_total.to_s]
+totals << [pdf.make_cell(content: Spree.t(:order_total, scope: :print_invoice)), invoice.display_total.to_s]
 
 totals_table_width = [0.875, 0.125].map { |w| w * pdf.bounds.width }
 pdf.table(totals, column_widths: totals_table_width) do

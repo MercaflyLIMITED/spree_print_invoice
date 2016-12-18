@@ -2,8 +2,8 @@ bill_address = printable.bill_address
 ship_address = printable.ship_address
 
 pdf.move_down 2
-address_cell_billing  = pdf.make_cell(content: Spree.t(:billing_address), font_style: :bold)
-address_cell_shipping = pdf.make_cell(content: Spree.t(:shipping_address), font_style: :bold)
+address_cell_billing  = pdf.make_cell(content: Spree.t(:billing_address, scope: :print_invoice), font_style: :bold)
+address_cell_shipping = pdf.make_cell(content: Spree.t(:shipping_address, scope: :print_invoice), font_style: :bold)
 
 billing =  "#{bill_address.firstname} #{bill_address.lastname}"
 billing << "\n#{bill_address.address1}"

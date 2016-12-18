@@ -11,7 +11,7 @@ module Spree
                    :shipments
 
     def items
-      printable.line_items.map do |item|
+      array = printable.line_items.map do |item|
         Spree::Printables::Invoice::Item.new(
           sku: item.variant.sku,
           name: item.variant.name,
@@ -23,6 +23,7 @@ module Spree
           left: item.variant.stock_items.first.count_on_hand
         )
       end
+      array.sort { |x, y| x.position <=> y.position }
     end
 
     def firstname

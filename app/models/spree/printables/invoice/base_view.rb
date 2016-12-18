@@ -64,6 +64,10 @@ module Spree
       increase_invoice_number! if use_sequential_number?
     end
 
+    def completed_date
+      (printable.completed_at + 2.hours).strftime("ANTES DE LAS %H:%M")
+    end
+
     private
 
     def increase_invoice_number!

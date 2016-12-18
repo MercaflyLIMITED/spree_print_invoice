@@ -23,47 +23,7 @@ module Spree
           left: item.variant.stock_items.first.count_on_hand
         )
       end
-
-      byebug
-      p = [Spree::Printables::Invoice::Item.new(
-          sku: '',
-          name: '',
-          options_text: '',
-          price: 1,
-          quantity: 1,
-          total: 1,
-          position: 'sdfsdf sada',
-          left: 1
-      ), Spree::Printables::Invoice::Item.new(
-          sku: '',
-          name: '',
-          options_text: '',
-          price: 1,
-          quantity: 1,
-          total: 1,
-          position: 'Z01-001-001-001',
-          left: 1
-      ), Spree::Printables::Invoice::Item.new(
-          sku: '',
-          name: '',
-          options_text: '',
-          price: 1,
-          quantity: 1,
-          total: 1,
-          position: 'sfsdfsdf',
-          left: 1
-      ), Spree::Printables::Invoice::Item.new(
-          sku: '',
-          name: '',
-          options_text: '',
-          price: 1,
-          quantity: 1,
-          total: 1,
-          position: nil,
-          left: 1
-      )]
-
-      p.sort { |x, y| x.position && y.position ? x.position <=> y.position: x.position  ? -1 : 1 }
+      array.sort { |x, y| x.position && y.position ? x.position <=> y.position: x.position  ? -1 : 1 }
 
     end
 

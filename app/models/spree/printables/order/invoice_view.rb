@@ -23,7 +23,7 @@ module Spree
           left: item.variant.stock_items.first.count_on_hand
         )
       end
-      array.sort { |x, y| x.position <=> y.position }
+      # array.sort { |x, y| x.position <=> y.position }
     end
 
     def firstname

@@ -64,13 +64,9 @@ module Spree
       increase_invoice_number! if use_sequential_number?
     end
 
-    def completed_date
-      (printable.completed_at + 2.hours).strftime("ANTES DE LAS %F %H:%M")
-    end
-
     def order_note
       if printable.admin_note.nil?
-        ''
+        (printable.completed_at + 2.hours).strftime("ANTES DE LAS %F %H:%M")
       else
         'Note:' + printable.admin_note
       end

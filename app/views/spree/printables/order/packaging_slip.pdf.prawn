@@ -31,20 +31,20 @@ prawn_document(force_download: true) do |pdf|
 
     render 'spree/printables/shared/packaging_slip/items', pdf: pdf, printable: @doc
 
-    pdf.move_down 30
-    pdf.text Spree::PrintInvoice::Config[:anomaly_message], align: :left, size: @font_size
-
     pdf.move_down 20
-    pdf.bounding_box([0, pdf.cursor], width: pdf.bounds.width, height: 150) do
+    pdf.bounding_box([0, pdf.cursor], width: pdf.bounds.width, height: 100) do
       pdf.transparent(0.5) { pdf.stroke_bounds }
-      pdf.text @doc.completed_date
       pdf.text @doc.order_note
     end
+
+    pdf.move_down 10
+
+    render 'spree/printables/shared/totals', pdf: pdf, invoice: @doc
   end
 
   # Footer
   if Spree::PrintInvoice::Config[:use_footer]
-    render 'spree/printables/shared/footer', pdf: pdf
+    render 'spree/printables/shared/packaging_slip/footer', pdf: pdf
   end
 
   # Page Number

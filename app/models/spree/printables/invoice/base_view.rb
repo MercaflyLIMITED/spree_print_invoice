@@ -65,7 +65,11 @@ module Spree
     end
 
     def completed_date
-      (printable.completed_at + 2.hours).strftime("ANTES DE LAS %H:%M")
+      (printable.completed_at + 2.hours).strftime("ANTES DE LAS %F %H:%M")
+    end
+
+    def order_note
+      'Note:' + printable.admin_note
     end
 
     private

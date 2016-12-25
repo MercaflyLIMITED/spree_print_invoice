@@ -68,13 +68,6 @@
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="form-group">
-              <%= label_tag :q_email_cont, Spree.t(:email) %>
-              <%= f.text_field :email_cont, class: 'form-control js-filterable' %>
-            </div>
-          </div>
-
         </div>
 
         <div data-hook="admin_orders_index_search_buttons" class="form-actions">
@@ -97,7 +90,6 @@
         <th><%= sort_link @search, :number, I18n.t(:number, scope: [:spree, :print_invoice]) %></th>
         <th><%= sort_link @search, :firstname, I18n.t(:firstname, scope: [:spree, :print_invoice]) %></th>
         <th><%= sort_link @search, :lastname, I18n.t(:lastname, scope: [:spree, :print_invoice]) %></th>
-        <th><%= sort_link @search, :email, I18n.t(:email, scope: [:spree, :print_invoice]) %></th>
         <th><%= sort_link @search, :total, I18n.t(:total, scope: [:spree, :print_invoice]) %></th>
         <th data-hook="admin_orders_index_header_actions" class="actions"></th>
       </tr>
@@ -110,7 +102,6 @@
         <td><%= bookkeeping_document.number %></td>
         <td><%= bookkeeping_document.firstname %></td>
         <td><%= bookkeeping_document.lastname %></td>
-        <td><%= bookkeeping_document.email %></td>
         <td><%= bookkeeping_document.display_total.to_html %></td>
         <td class='actions actions-1' data-hook="admin_orders_index_row_actions">
           <%= link_to_with_icon "file", "", admin_bookkeeping_document_path(bookkeeping_document, format: :pdf), title: "show_bookkeeping_document_#{bookkeeping_document.id}", no_text: true %>

@@ -38,6 +38,7 @@ prawn_document(force_download: true) do |pdf|
     pdf.bounding_box([0, pdf.cursor], width: pdf.bounds.width, height: 150) do
       pdf.transparent(0.5) { pdf.stroke_bounds }
       pdf.text @doc.completed_date
+      pdf.text @doc.order_note
     end
   end
 

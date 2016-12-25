@@ -69,7 +69,11 @@ module Spree
     end
 
     def order_note
-      'Note:' + printable.admin_note
+      if printable.admin_note.nil?
+        ''
+      else
+        'Note:' + printable.admin_note
+      end
     end
 
     private

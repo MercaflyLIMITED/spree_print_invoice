@@ -14,6 +14,7 @@ en:
       item_description: Descripción del Artículo
       options: Opciones
       qty: Cantidad
+      iva: IVA
       billing_address: Dirección de Envio
       shipping_address: Dirección de envío
       subtotal: Total parcial
@@ -25,7 +26,7 @@ en:
       buttons:
         invoice: Imprimir Factura
         packaging_slip: Imprimir Recibo para el Embalaje
-      order_invoice: Albaran
+      order_invoice: Factura
       order_packaging_slip: Recibo para el Embalaje
       reimbursement_invoice: Factura para devolución
       invoice: Factura del cliente
@@ -60,6 +61,6 @@ en:
       vat: IVA no aplicable
       pdf_legend: PDF
       invoice_slip_legend: Factura / Deslizamiento
-      invoice_number: 'Número de Albaran: %{number}'
-      invoice_date: 'Fecha de la Albaran: %{date}'
+      invoice_number: 'Número de Factura: %{number}'
+      invoice_date: 'Fecha de la Factura: %{date}'
       position: Position

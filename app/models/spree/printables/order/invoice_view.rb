@@ -22,7 +22,7 @@ module Spree
           total: item.display_total,
           position: item.variant.stock_items.first.shelf_position,
           left: item.variant.stock_items.first.count_on_hand,
-          iva: item.tax_category.nil? '': item.tax_category.name,
+          iva: item.tax_category.nil? ? '': item.tax_category.name,
         )
       end
       array.sort { |x, y| x.position && y.position ? x.position <=> y.position: x.position  ? -1 : 1 }

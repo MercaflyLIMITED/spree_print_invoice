@@ -52,12 +52,18 @@ module Spree
       shipments.map(&:shipping_method).map(&:name)
     end
 
-    def number
-      if use_sequential_number?
-        Spree::PrintInvoice::Config.next_number
-      else
-        printable.number
+    def admin_shipping_methods
+
+      if total_weight > 4500 && shipments.first.shipping_method.admin_name == 'MRW-SPAIN'
+        return ['RAPIDO EXPRRES']
+      elsif total_weight <= 4500 && shipments.first.shipping_method.admin_name == 'MRW-SPAIN'
+        return ['MRW']
       end
+      shipments.map(&:shipping_method).map(&:admin_name)
+    end
+
+    def number
+      printable.number
     end
 
     def after_save_actions

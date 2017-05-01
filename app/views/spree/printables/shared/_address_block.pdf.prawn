@@ -15,8 +15,8 @@ shipping << "\n#{ship_address.address2}" unless ship_address.address2.blank?
 shipping << "\n#{ship_address.city}, #{ship_address.state_text} #{ship_address.zipcode}"
 shipping << "\n#{ship_address.country.name}" unless ship_address.country.nil?
 shipping << "\n#{ship_address.phone}"
-shipping << "\n\n#{Spree.t(:via, scope: :print_invoice)} #{printable.shipping_methods.join(", ")}"
+shipping << "\n\n#{Spree.t(:via, scope: :print_invoice)} #{printable.shipping_methods.join(", ")}(#{printable.admin_shipping_methods.join(", ")})"
 
-data = [[address_cell, address_cell_shipping], [address, shipping]]
+data = [[address_cell_shipping, address_cell], [shipping, address]]
 
 pdf.table(data, position: :center, column_widths: [pdf.bounds.width / 2, pdf.bounds.width / 2])

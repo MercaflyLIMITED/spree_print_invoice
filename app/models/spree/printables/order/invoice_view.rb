@@ -9,7 +9,8 @@ module Spree
                    :total,
                    :payments,
                    :shipments,
-                   :note
+                   :note,
+                   :total_weight
 
     def items
       array = printable.line_items.map do |item|

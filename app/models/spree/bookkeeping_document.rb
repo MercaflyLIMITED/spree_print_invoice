@@ -61,7 +61,8 @@ module Spree
     #
     def pdf
       if Spree::PrintInvoice::Config.store_pdf
-        send_or_create_pdf
+        #send_or_create_pdf
+        render_pdf
       else
         render_pdf
       end

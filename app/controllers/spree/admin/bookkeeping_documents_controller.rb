@@ -18,12 +18,13 @@ module Spree
         params[:q] ||= {}
         @search = Spree::BookkeepingDocument.ransack(params[:q])
         @bookkeeping_documents = @search.result
-        @bookkeeping_documents = @bookkeeping_documents.where(printable: @order) if order_focused?
-        @bookkeeping_documents = @bookkeeping_documents.page(params[:page] || 1).per(10)
+        @bookkeeping_documents = @bookkeeping_documents.where(printable_id: printable_ids) if order_focused?
+        @bookkeeping_documents = @bookkeeping_documents.page(params[:page] || 1).per(30)
       end
 
       def generate
-        @order.invoice_for_order
+        @order.generate_invoice_for_order
+        @order.shipments.each { |s| s.packaging_slip_for_shipment }
         redirect_to spree.admin_order_bookkeeping_documents_path(@order)
       end
 
@@ -31,6 +32,10 @@ module Spree
 
       def order_focused?
         params[:order_id].present?
+      end
+
+      def printable_ids
+        @order.shipments.ids << @order.id
       end
 
       def load_order

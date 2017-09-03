@@ -88,9 +88,7 @@
         <th><%= sort_link @search, :created_at, I18n.t(:date, scope: [:spree, :print_invoice]) %></th>
         <th><%= sort_link @search, :template, I18n.t(:document_type, scope: [:spree, :print_invoice]) %></th>
         <th><%= sort_link @search, :number, I18n.t(:number, scope: [:spree, :print_invoice]) %></th>
-        <th><%= sort_link @search, :firstname, I18n.t(:firstname, scope: [:spree, :print_invoice]) %></th>
-        <th><%= sort_link @search, :lastname, I18n.t(:lastname, scope: [:spree, :print_invoice]) %></th>
-        <th><%= sort_link @search, :total, I18n.t(:total, scope: [:spree, :print_invoice]) %></th>
+        <th>状态</th>
         <th data-hook="admin_orders_index_header_actions" class="actions"></th>
       </tr>
     </thead>
@@ -100,9 +98,7 @@
         <td><%= l bookkeeping_document.created_at.to_date %></td>
         <td><%= I18n.t(bookkeeping_document.document_type, scope: [:spree, :print_invoice]) %></td>
         <td><%= bookkeeping_document.number %></td>
-        <td><%= bookkeeping_document.firstname %></td>
-        <td><%= bookkeeping_document.lastname %></td>
-        <td><%= bookkeeping_document.display_total.to_html %></td>
+        <td><%= bookkeeping_document.printable.state %></td>
         <td class='actions actions-1' data-hook="admin_orders_index_row_actions">
           <%= link_to_with_icon 'file', '', admin_bookkeeping_document_path(bookkeeping_document, format: :pdf), title: "show_bookkeeping_document_#{bookkeeping_document.id}", no_text: true %>
           <%= link_to_delete bookkeeping_document, :no_text => true %>

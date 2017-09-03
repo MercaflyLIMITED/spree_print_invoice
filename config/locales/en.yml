@@ -28,6 +28,7 @@ en:
         packaging_slip: Imprimir Recibo para el Embalaje
       order_invoice: Factura
       order_packaging_slip: Recibo para el Embalaje
+      shipment_packaging_slip: Recibo para el Embalaje
       reimbursement_invoice: Factura para devolución
       invoice: Factura del cliente
       item_name: Nombre de elemento o SKU

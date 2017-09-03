@@ -6,12 +6,27 @@ font_style = {
 prawn_document(force_download: true) do |pdf|
   pdf.define_grid(columns: 5, rows: 8, gutter: 10)
 
-  pdf.font_families.update("simhei" => {
-      :normal => Rails.root.join("app/assets/fonts/simhei.ttf"),
-      :italic => Rails.root.join("app/assets/fonts/simhei.ttf"),
-      :bold => Rails.root.join("app/assets/fonts/simhei.ttf"),
-      :bold_italic => Rails.root.join("app/assets/fonts/simhei.ttf")
-  })
+  pdf.font_families.update(
+    "arial" => {
+          :normal => Rails.root.join("app/assets/fonts/arial.ttf"),
+          :italic => Rails.root.join("app/assets/fonts/arial.ttf"),
+          :bold => Rails.root.join("app/assets/fonts/arial.ttf"),
+          :bold_italic => Rails.root.join("app/assets/fonts/arial.ttf")
+     },
+    "msyh" => {
+        :normal => Rails.root.join("app/assets/fonts/msyh.ttf"),
+        :italic => Rails.root.join("app/assets/fonts/msyh.ttf"),
+        :bold => Rails.root.join("app/assets/fonts/msyh.ttf"),
+        :bold_italic => Rails.root.join("app/assets/fonts/msyh.ttf")
+    },
+    "simhei" => {
+            :normal => Rails.root.join("app/assets/fonts/simhei.ttf"),
+            :italic => Rails.root.join("app/assets/fonts/simhei.ttf"),
+            :bold => Rails.root.join("app/assets/fonts/simhei.ttf"),
+            :bold_italic => Rails.root.join("app/assets/fonts/simhei.ttf")
+        })
+
+  pdf.fallback_fonts(["msyh"])
 
   pdf.font font_style[:face], size: font_style[:size]
 

@@ -22,7 +22,7 @@ invoice.items.each do |item|
   data += [row]
 end
 
-column_widths = [0.18, 0.30, 0.10, 0.12, 0.075, 0.105, 0.12].map { |w| w * pdf.bounds.width }
+column_widths = [0.18, 0.30, 0.10, 0.12, 0.075, 0.125, 0.10].map { |w| w * pdf.bounds.width }
 
 pdf.table(data, header: true, position: :center, column_widths: column_widths) do
   row(0).style align: :center, font_style: :bold

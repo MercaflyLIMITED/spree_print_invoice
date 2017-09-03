@@ -1,4 +1,4 @@
-ship_address = printable.ship_address
+ship_address = printable.printable.order.ship_address
 
 address_cell = pdf.make_cell(content: "Dirección de la empresa", font_style: :bold)
 address_cell_shipping = pdf.make_cell(content: Spree.t(:shipping_address, scope: :print_invoice), font_style: :bold)
@@ -12,9 +12,9 @@ address << "\nCIF: B99478125"
 shipping =  "#{ship_address.firstname} #{ship_address.lastname}"
 shipping << "\n#{ship_address.address1}"
 shipping << "\n#{ship_address.address2}" unless ship_address.address2.blank?
-shipping << "\n#{ship_address.city}, #{ship_address.state_text} #{ship_address.zipcode}"
-shipping << "\n#{ship_address.country.name}" unless ship_address.country.nil?
+shipping << "\n#{ship_address.city}, #{ship_address.try(:state).try(:name)} #{ship_address.zipcode} #{ship_address.try(:country).try(:name)}"
 shipping << "\n#{ship_address.phone}"
+shipping << "\n\n#{Spree.t(:via, scope: :print_invoice)} #{printable.shipment.shipping_method.name}"
 
 data = [[address_cell_shipping, address_cell], [shipping, address]]
 

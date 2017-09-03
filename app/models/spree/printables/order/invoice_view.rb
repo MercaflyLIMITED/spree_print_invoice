@@ -16,7 +16,7 @@ module Spree
       array = printable.line_items.map do |item|
         Spree::Printables::Invoice::Item.new(
           sku: item.variant.sku,
-          name: item.variant.name + ' '+ taxon_name(item),
+          name: item.variant.name + ' '+ item.tax_category.description,
           options_text: item.variant.options_text,
           price: item.display_price,
           quantity: item.quantity,

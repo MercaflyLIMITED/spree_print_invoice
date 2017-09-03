@@ -50,6 +50,10 @@ prawn_document(force_download: true) do |pdf|
 
     render 'spree/printables/shared/totals', pdf: pdf, invoice: doc
 
+    pdf.move_down 10
+
+    render 'spree/printables/shared/states', pdf: pdf, invoice: doc
+
     pdf.move_down 30
 
     pdf.text Spree::PrintInvoice::Config[:return_message], align: :right, size: font_style[:size]

@@ -5,9 +5,11 @@ totals = []
 totals << [pdf.make_cell(content: Spree.t(:subtotal, scope: :print_invoice)), invoice.display_item_total.to_s]
 
 # Adjustments
-invoice.adjustments.each do |adjustment|
-  totals << [pdf.make_cell(content: adjustment.label), adjustment.display_amount.to_s]
+total_iva = 0
+invoice.ivas.each do |iva|
+  total_iva += iva.iva
 end
+totals << [pdf.make_cell(content: 'Total IVA'), '€' + total_iva.to_s ]
 
 # Shipments
 invoice.shipments.each do |shipment|

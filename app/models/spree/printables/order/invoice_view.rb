@@ -23,7 +23,7 @@ module Spree
           total: item.display_total,
           position: item.variant.stock_items.first.shelf_position,
           left: item.variant.stock_items.first.count_on_hand,
-          iva: item.tax_category.nil? ? '': item.tax_category.name,
+          iva: iva_rate(item),
         )
       end
       array.sort { |x, y| x.position && y.position ? x.position <=> y.position: x.position  ? -1 : 1 }
@@ -39,6 +39,19 @@ module Spree
     end
 
     private
+
+    def iva_rate(item)
+      ads = item.adjustments.where(:source_type => 'Spree::TaxRate')
+      if ads.count > 0
+        amount = ads.first.try(:source).try(:amount)
+        if amount
+          return (amount * 100).to_s + '%'
+        end
+      else
+        ''
+      end
+      ''
+    end
 
     def taxon_name(item)
       taxon_id = item.variant.product.taxons.where(:depth => 1).ids.first

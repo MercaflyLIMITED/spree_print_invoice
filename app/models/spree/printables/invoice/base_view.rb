@@ -40,6 +40,37 @@ module Spree
       adjustments
     end
 
+    def ivas
+      ivas = []
+      all_adjustments.where(:source_type => 'Spree::TaxRate').group_by(&:label).each do |label, adjustment_group|
+        total_amount = adjustment_group.map(&:adjustable).map(&:amount).sum
+        rate = adjustment_group.first.source.amount
+
+        ivas << Spree::Printables::Invoice::Iva.new(
+          base: (total_amount / (1 + rate)).to_s,
+          discount: '0',
+          rate: (rate * 100).to_s + '%',
+          iva: adjustment_group.map(&:amount).sum
+        )
+      end
+
+      promotion_total = - all_adjustments.where(:source_type => 'Spree::PromotionAction').map(&:amount).sum
+      ivas = ivas.sort_by(&:rate)
+      ivas.each do |iva|
+        if promotion_total > 0
+
+          total = iva.base.to_f + iva.iva.to_f
+
+          discount = promotion_total > total ? total: promotion_total
+          iva.discount = discount
+          iva.iva = iva.iva - discount * (iva.rate.to_f / 100 ).to_f
+
+          promotion_total -= total
+        end
+      end
+
+    end
+
     def shipments
       raise NotImplementedError, 'Please implement shipments'
     end

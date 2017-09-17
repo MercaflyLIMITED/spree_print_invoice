@@ -48,6 +48,10 @@ prawn_document(force_download: true) do |pdf|
 
     pdf.move_down 10
 
+    render 'spree/printables/shared/invoice/iva', pdf: pdf, invoice: doc
+
+    pdf.move_down 10
+
     render 'spree/printables/shared/totals', pdf: pdf, invoice: doc
 
     pdf.move_down 10

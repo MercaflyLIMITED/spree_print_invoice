@@ -1,7 +1,7 @@
 states = []
 
 # Payments
-@doc.printable.payments.each do |payment|
+@doc.printable.payments.valid.each do |payment|
   states << [pdf.make_cell(content: payment.payment_method.display_name), payment.state]
 end
 

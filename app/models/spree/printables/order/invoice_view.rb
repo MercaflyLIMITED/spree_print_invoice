@@ -41,6 +41,10 @@ module Spree
     private
 
     def iva_rate(item)
+      if ship_address.country.iso == 'CH'
+        return '0%'
+      end
+
       ads = item.adjustments.where(:source_type => 'Spree::TaxRate')
       if ads.count > 0
         amount = ads.first.try(:source).try(:amount)

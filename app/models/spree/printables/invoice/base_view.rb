@@ -42,6 +42,11 @@ module Spree
 
     def ivas
       ivas = []
+
+      if ship_address.country.iso = 'CH'
+        return ivas
+      end
+
       all_adjustments.where(:source_type => 'Spree::TaxRate').group_by(&:label).each do |label, adjustment_group|
         total_amount = adjustment_group.map(&:adjustable).map(&:amount).sum
         rate = adjustment_group.first.source.amount

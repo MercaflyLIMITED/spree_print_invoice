@@ -14,7 +14,7 @@ module Spree
 
 
     def items
-      array = @shipment.manifest.map do |m|
+      array = @shipment.manifest.select { |m| m.line_item != nil }.map do |m|
         item = m.line_item
         Spree::Printables::Invoice::Item.new(
           sku: item.variant.sku,

@@ -14,9 +14,11 @@ module Spree
 
 
     def items
+
       array = @shipment.manifest.select { |m| m.line_item != nil }.map do |m|
         item = m.line_item
         Spree::Printables::Invoice::Item.new(
+          index: 0,
           sku: item.variant.sku,
           name: item.product.master.name + ' ',
           options_text: item.variant.options_text,
@@ -27,7 +29,12 @@ module Spree
           left: item.variant.stock_items.first.count_on_hand,
         )
       end
-      array.sort { |x, y| x.position && y.position ? x.position <=> y.position: x.position  ? -1 : 1 }
+      array = array.sort { |x, y| x.position && y.position ? x.position <=> y.position: x.position  ? -1 : 1 }
+      index = 0
+      array.each do |item|
+        index = index + 1
+        item.index = index
+      end
     end
 
     def initialize(shipment)

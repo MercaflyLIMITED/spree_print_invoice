@@ -13,8 +13,11 @@ module Spree
                    :total_weight
 
     def items
+      i = 0
       array = printable.line_items.map do |item|
+        i= i +1
         Spree::Printables::Invoice::Item.new(
+          index: i,
           sku: item.variant.sku,
           name: item.variant.name + ' '+ (item.tax_category.try(:description) || ''),
           options_text: item.variant.options_text,
@@ -26,6 +29,7 @@ module Spree
           iva: iva_rate(item),
         )
       end
+
       array.sort { |x, y| x.position && y.position ? x.position <=> y.position: x.position  ? -1 : 1 }
 
     end

@@ -43,7 +43,7 @@ module Spree
     def ivas
       ivas = []
 
-      if ship_address.country.iso = 'CH'
+      if ship_address.country.iso == 'CH'
         return ivas
       end
 
@@ -73,6 +73,7 @@ module Spree
           promotion_total -= total
         end
       end
+      ivas
 
     end
 

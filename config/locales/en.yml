@@ -20,7 +20,7 @@ en:
       subtotal: Total parcial
       order_total: Total del pedido
       position: Posición
-      left: Izquierda
+      left: Stock
       documents: Documentos
       documents_for_order: "Documents for order %{order_number}"
       buttons:
@@ -65,3 +65,4 @@ en:
       invoice_number: 'Número de Factura: %{number}'
       invoice_date: 'Fecha de la Factura: %{date}'
       position: Position
+    index: index

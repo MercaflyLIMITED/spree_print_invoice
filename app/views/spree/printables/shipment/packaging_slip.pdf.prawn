@@ -49,6 +49,10 @@ prawn_document(force_download: true) do |pdf|
     pdf.move_down 20
 
     render 'spree/printables/shared/packaging_slip/totals', pdf: pdf, printable: @doc
+
+    pdf.move_down 20
+
+    render 'spree/printables/shared/packaging_slip/states', pdf: pdf, printable: @doc
   end
 
   # Footer

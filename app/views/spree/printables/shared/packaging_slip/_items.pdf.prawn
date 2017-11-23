@@ -1,4 +1,5 @@
 header =  [
+  pdf.make_cell(content: Spree.t(:index)),
   pdf.make_cell(content: Spree.t(:sku)),
   pdf.make_cell(content: Spree.t(:item_description, scope: :print_invoice)),
   pdf.make_cell(content: Spree.t(:qty, scope: :print_invoice)),
@@ -9,6 +10,7 @@ data = [header]
 
 printable.items.each do |item|
   row = [
+    item.index,
     item.sku,
     item.name,
     item.quantity,
@@ -18,7 +20,7 @@ printable.items.each do |item|
   data += [row]
 end
 
-column_widths = [0.15, 0.45, 0.1, 0.2, 0.1].map { |w| w * pdf.bounds.width }
+column_widths = [0.1, 0.15, 0.35, 0.1, 0.2, 0.1].map { |w| w * pdf.bounds.width }
 
 pdf.table(data, header: true, position: :center, column_widths: column_widths) do
   row(0).style align: :center

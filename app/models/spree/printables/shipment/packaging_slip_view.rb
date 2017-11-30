@@ -15,16 +15,15 @@ module Spree
 
     def items
 
-      array = @shipment.manifest.select { |m| m.line_item != nil }.map do |m|
-        item = m.line_item
+      array = @shipment.manifest.select { |item| item.line_item != nil }.map do |item|
         Spree::Printables::Invoice::Item.new(
           index: 0,
           sku: item.variant.sku,
-          name: item.product.master.name + ' ',
+          name: item.variant.name + ' ',
           options_text: item.variant.options_text,
-          price: item.display_price,
+          price: item.variant.display_price,
           quantity: item.quantity,
-          total: item.display_total,
+          total: item.line_item.display_total,
           position: item.variant.stock_items.first.shelf_position,
           left: item.variant.stock_items.first.count_on_hand,
         )

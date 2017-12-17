@@ -61,8 +61,8 @@ module Spree
     #
     def pdf
       if Spree::PrintInvoice::Config.store_pdf
-        #send_or_create_pdf
-        render_pdf
+        send_or_create_pdf
+        # render_pdf
       else
         render_pdf
       end
@@ -78,6 +78,14 @@ module Spree
     #
     def file_path
       @_file_path ||= Rails.root.join(storage_path, "#{file_name}")
+    end
+
+    def local_file_path
+      unless File.exist?(file_path)
+        File.open(file_path, 'wb') { |f| f.puts render_pdf }
+        return file_path
+      end
+      return file_path
     end
 
     # = PDF storage folder path for given template name

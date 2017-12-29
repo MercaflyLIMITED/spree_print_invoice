@@ -23,12 +23,13 @@ module Spree
           quantity: item.quantity,
           total: item.display_total,
           position: item.variant.stock_items.first.shelf_position,
+          shelf: item.variant.stock_items.first.shelf,
           left: item.variant.stock_items.first.count_on_hand,
           iva: iva_rate(item),
         )
       end
 
-      array = array.sort { |x, y| x.position && y.position ? x.position <=> y.position: x.position  ? -1 : 1 }
+      array = array.sort { |x, y| x.shelf.try(:position) && y.shelf.try(:position) ? x.shelf.try(:position) <=> y.shelf.try(:position): x.shelf.try(:position)  ? -1 : 1 }
       index = 0
       array.each do |item|
         index = index + 1

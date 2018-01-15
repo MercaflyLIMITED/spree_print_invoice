@@ -1,4 +1,4 @@
-ship_address = printable.ship_address
+    ship_address = printable.ship_address
 
 address_cell = pdf.make_cell(content: "Dirección de la empresa", font_style: :bold)
 address_cell_shipping = pdf.make_cell(content: Spree.t(:shipping_address, scope: :print_invoice), font_style: :bold)

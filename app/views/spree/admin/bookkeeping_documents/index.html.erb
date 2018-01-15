@@ -85,10 +85,10 @@
   <table class="table" id="listing_orders" data-hook>
     <thead>
       <tr data-hook="printables_index_headers">
-        <th><%= sort_link @search, :created_at, I18n.t(:date, scope: [:spree, :print_invoice]) %></th>
-        <th><%= sort_link @search, :template, I18n.t(:document_type, scope: [:spree, :print_invoice]) %></th>
-        <th><%= sort_link @search, :number, I18n.t(:number, scope: [:spree, :print_invoice]) %></th>
-        <th>状态</th>
+        <th><%= sort_link @search, :created_at, I18n.t(:date, scope: [:spree, :print_invoice, :admin]) %></th>
+        <th><%= sort_link @search, :template, I18n.t(:document_type, scope: [:spree, :print_invoice, :admin]) %></th>
+        <th><%= sort_link @search, :number, I18n.t(:number, scope: [:spree, :print_invoice, :admin]) %></th>
+        <th><%=  I18n.t(:state, scope: [:spree, :print_invoice, :admin])  %></th>
         <th data-hook="admin_orders_index_header_actions" class="actions"></th>
       </tr>
     </thead>
@@ -96,7 +96,7 @@
     <% @bookkeeping_documents.each do |bookkeeping_document| %>
       <tr data-hook="admin_printables_index_rows" class="<%= cycle('odd', 'even') %>">
         <td><%= l bookkeeping_document.created_at.to_date %></td>
-        <td><%= I18n.t(bookkeeping_document.document_type, scope: [:spree, :print_invoice]) %></td>
+        <td><%= I18n.t(bookkeeping_document.document_type, scope: [:spree, :print_invoice, :admin]) %></td>
         <td><%= bookkeeping_document.number %></td>
         <td><%= bookkeeping_document.printable.state %></td>
         <td class='actions actions-1' data-hook="admin_orders_index_row_actions">

@@ -1,19 +1,19 @@
 ---
-en:
+zh-CN:
   spree:
     print_invoice:
       admin:
-        date: Date
-        document_type: Document Type
-        number: Number
-        state: State
-        order_invoice: Invoice
-        order_packaging_slip: Packaging Slip
-        order_list: Order List
-        shipment_packaging_slip: Packaging Slip
+        date: 日期
+        document_type: 文件类型
+        number: 编号
+        state: 状态
+        order_invoice: 发票
+        order_packaging_slip: 取货单
+        order_list: 用户货单
+        shipment_packaging_slip: 取货单
 
       date: Date
-      documents: Documentos
+      documents: 文件
       document_type: Documentos Tipo
       number: Número
       firstname: Nombre
@@ -31,7 +31,6 @@ en:
       order_total: Total del pedido
       position: Posición
       left: Stock
-      documents: Documentos
       documents_for_order: "Documents for order %{order_number}"
       buttons:
         invoice: Imprimir Factura

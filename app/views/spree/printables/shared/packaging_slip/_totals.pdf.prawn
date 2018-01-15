@@ -1,5 +1,5 @@
 # TOTALS
-totals = [['111','1']]
+totals = []
 
 # Subtotal
 #totals << [pdf.make_cell(content: Spree.t(:subtotal, scope: :print_invoice)), invoice.display_item_total.to_s]

@@ -28,7 +28,7 @@ en:
       billing_address: Dirección de Envio
       shipping_address: Dirección de envío
       subtotal: Total parcial
-      order_total: Total del pedido
+      order_total: Total
       position: Posición
       left: Stock
       documents: Documentos

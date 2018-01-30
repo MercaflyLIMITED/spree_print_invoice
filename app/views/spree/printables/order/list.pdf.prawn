@@ -39,7 +39,7 @@ prawn_document(force_download: true) do |pdf|
 
     # address block on first page only
     if pdf.page_number == 1
-      render 'spree/printables/shared/address_block', pdf: pdf, printable: @doc
+      render 'spree/printables/shared/lists/address_block', pdf: pdf, printable: @doc
     end
 
     pdf.move_down 10
@@ -52,7 +52,7 @@ prawn_document(force_download: true) do |pdf|
 
     pdf.move_down 10
 
-    render 'spree/printables/shared/states', pdf: pdf, invoice: @doc
+    render 'spree/printables/shared/lists/states', pdf: pdf, invoice: @doc
 
     pdf.move_down 30
 

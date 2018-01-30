@@ -1,5 +1,8 @@
-path = image_path('logo/spree_50.png')
-im = Rails.application.assets.find_asset(Spree::PrintInvoice::Config[:logo_path])
+if Rails.configuration.assets.compile
+  im = Rails.application.assets.find_asset(Spree::PrintInvoice::Config[:logo_path])
+else
+  im = (Rails.application.assets || ::Sprockets::Railtie.build_environment(Rails.application)).find_asset(Spree::PrintInvoice::Config[:logo_path])
+end
 
 if im && File.exist?(im.pathname)
   pdf.image im.filename, vposition: :top, height: 40, scale: Spree::PrintInvoice::Config[:logo_scale]

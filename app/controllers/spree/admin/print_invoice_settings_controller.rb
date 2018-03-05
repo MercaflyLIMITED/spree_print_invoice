@@ -3,6 +3,7 @@ module Spree
     class PrintInvoiceSettingsController < ResourceController
       def update
         settings = Spree::PrintInvoiceSetting.new
+        settings.change_preferences_store(current_store)
         preferences = params && params.key?(:preferences) ? params.delete(:preferences) : params
         preferences.each do |name, value|
           next unless settings.has_preference? name.to_param

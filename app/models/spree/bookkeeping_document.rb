@@ -1,5 +1,7 @@
 module Spree
   class BookkeepingDocument < ActiveRecord::Base
+    include Spree::MultipleStore
+
     PERSISTED_ATTRS = [
       :firstname,
       :lastname,
